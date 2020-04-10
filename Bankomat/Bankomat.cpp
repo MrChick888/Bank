@@ -12,7 +12,7 @@ void stop_and_clear(int s);
 void pause_and_clear();
 void exit();
 void error();
-
+ 
 int main()
 {
 	cout << "Witaj w mBanku.";
