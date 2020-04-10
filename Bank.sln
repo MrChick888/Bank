@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bankomat", "Bankomat\Bankomat.vcxproj", "{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Debug|x64.ActiveCfg = Debug|x64
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Debug|x64.Build.0 = Debug|x64
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Debug|x86.Build.0 = Debug|Win32
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Release|x64.ActiveCfg = Release|x64
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Release|x64.Build.0 = Release|x64
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Release|x86.ActiveCfg = Release|Win32
+		{EA75398A-BE7E-45A7-BDBA-B5649E24C1E1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8292946B-8A7E-4057-B178-3AC9B07CD719}
+	EndGlobalSection
+EndGlobal
