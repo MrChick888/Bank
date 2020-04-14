@@ -1,17 +1,26 @@
 ﻿#include <iostream>
 #include <Windows.h>
 #include <fstream>
+#include <conio.h>
+#include <stdio.h>
+#include <cstdlib>
+#include<string>
 
 using namespace std;
 
-int opcja1, opcja2, blad = 0, balans = 1000, wyplata, wplata;
+int blad = 0, wyplata, wplata;
+char opcja1, opcja2;
 string PIN;
 fstream plik;
 
 void stop_and_clear(int s);
 void pause_and_clear();
-void exit();
+void exit1();
 void error();
+int p_odczyt();
+void p_operacja(long int b);
+
+long int balans = p_odczyt();
 
 int main()
 {
@@ -21,12 +30,11 @@ int main()
 	cout << "1. Bankomat" << endl;
 	cout << "2. Wplatomat" << endl;
 	cout << "3. Wyjdz" << endl;
-	cout << "Wybieram: ";
-	cin >> opcja1;
+	opcja1 = _getch();
 	system("cls");
 	switch (opcja1)
 	{
-	case 1:
+	case '1':
 		cout << "Witamy w bankomacie mBank" << endl;
 		cout << "Prosze wprowadzic swoja karte";
 		stop_and_clear(3000);
@@ -57,11 +65,10 @@ int main()
 			cout << "1. Wyplata gotowki." << endl;
 			cout << "2. Sprawdzenie stanu konta." << endl;
 			cout << "3. Wyjdz" << endl;
-			cout << "Wybieram: ";
-			cin >> opcja2;
+			opcja2 = _getch();
 			switch (opcja2)
 			{
-			case 1:
+			case '1':
 				system("cls");
 				cout << "Wprowadz kwote ktora chcesz wyplacic: ";
 				cin >> wyplata;
@@ -73,17 +80,18 @@ int main()
 				else
 				{
 					balans -= wyplata;
+					p_operacja(balans);
 					cout << "Wyplacono " << wyplata << " zl." << endl;
 					cout << "Na koncie pozostalo " << balans << " zl." << endl;
 					pause_and_clear();
 				}
 				break;
-			case 2:
+			case '2':
 				system("cls");
 				cout << "Twoj stan konta wynosi: " << balans << " zl." << endl;
 				pause_and_clear(); break;
-			case 3:
-				exit();
+			case '3':
+				exit1();
 				return 0;
 			default:
 				error(); break;
@@ -91,7 +99,7 @@ int main()
 		}
 		break;
 
-	case 2:
+	case '2':
 		cout << "Witamy we wplatomacie mBank" << endl;
 		cout << "Prosze wprowadzic swoja karte";
 		stop_and_clear(3000);
@@ -99,14 +107,14 @@ int main()
 		cout << "Prosze podac podac kwote wplaty: ";
 		cin >> wplata;
 		balans += wplata;
+		p_operacja(balans);
 		stop_and_clear(2000);
 		cout << "Pieniadze zostaly zdeponowane" << endl;
 		stop_and_clear(2000);
-		exit();
-		return 0;
-		break;
-	case 3:
-		exit();
+		exit1();
+		return 0; break;
+	case '3':
+		exit1();
 		return 0;
 	default:
 		error(); break;
@@ -122,7 +130,7 @@ void pause_and_clear()
 	system("PAUSE");
 	system("cls");
 }
-void exit()
+void exit1()
 {
 	system("cls");
 	cout << "Dziekuje za skorzystanie z naszych uslug." << endl;
@@ -132,4 +140,25 @@ void error()
 {
 	cout << "Nie ma takiej opcji." << endl;
 	stop_and_clear(1500);
+}
+int p_odczyt()
+{
+	string linia;
+	int b;
+	plik.open("srodki.txt", ios::in);
+	if (plik.good() == false)
+	{
+		cout << "Przepraszamy wystapil problem techniczny" << endl;
+		exit(0);
+	}
+	getline(plik, linia);
+	plik.close();
+	b = atoi(linia.c_str());
+	return b;
+}
+void p_operacja(long int b)
+{
+	plik.open("srodki.txt", ios::out);
+	plik << b;
+	plik.close();
 }
